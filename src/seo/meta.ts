@@ -1,7 +1,8 @@
 import { SCENARIOS, type ScenarioId } from '@/data/scenarios';
 
+/** Public origin plus base path, without a trailing slash (set in vite.config.ts). */
 export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? '').replace(/\/$/, '');
-export const SITE_NAME = 'Order Tracking Demo';
+const SITE_NAME = 'Order Tracking Demo';
 
 export interface PageMeta {
   title: string;
@@ -42,7 +43,7 @@ const SCENARIO_DESCRIPTIONS: Record<ScenarioId, string> = {
 export function scenarioMeta(id: ScenarioId): PageMeta {
   const scenario = SCENARIOS.find((s) => s.id === id)!;
   return {
-    title: `${scenario.title} – Order Tracking Demo`,
+    title: `${scenario.title} – ${SITE_NAME}`,
     description: SCENARIO_DESCRIPTIONS[id],
     path: `/track/${id}`,
   };
@@ -58,28 +59,7 @@ export const NOT_FOUND_META: PageMeta = {
 /** Every indexable page, used for pre-rendering and sitemap.xml. */
 export const INDEXABLE_PAGES: PageMeta[] = [HOME_META, ...SCENARIOS.map((s) => scenarioMeta(s.id))];
 
+/** `/track/delayed` → `https://…/track/delayed`. */
 export function absoluteUrl(path: string): string {
-  return `${SITE_URL}${path === '/' ? '/' : path}`;
-}
-
-function escapeAttr(value: string): string {
-  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-/** Route-specific head tags. `useDocumentMeta` keeps the same set in sync on the client. */
-export function renderHeadTags(meta: PageMeta): string {
-  const url = absoluteUrl(meta.path);
-  const title = escapeAttr(meta.title);
-  const description = escapeAttr(meta.description);
-  return [
-    `<title>${title}</title>`,
-    `<meta name="description" content="${description}" />`,
-    `<meta name="robots" content="${meta.noindex ? 'noindex, follow' : 'index, follow'}" />`,
-    `<link rel="canonical" href="${url}" />`,
-    `<meta property="og:title" content="${title}" />`,
-    `<meta property="og:description" content="${description}" />`,
-    `<meta property="og:url" content="${url}" />`,
-    `<meta name="twitter:title" content="${title}" />`,
-    `<meta name="twitter:description" content="${description}" />`,
-  ].join('\n    ');
+  return `${SITE_URL}${path}`;
 }

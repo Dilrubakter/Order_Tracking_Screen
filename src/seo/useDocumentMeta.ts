@@ -1,49 +1,38 @@
 import { useEffect } from 'react';
+import { metaTags } from './headTags';
 import { absoluteUrl, type PageMeta } from './meta';
 
-function setTag(selector: string, create: () => HTMLElement, attr: string, value: string) {
-  let el = document.head.querySelector<HTMLElement>(selector);
-  if (!el) {
-    el = create();
-    document.head.appendChild(el);
-  }
-  el.setAttribute(attr, value);
-}
-
-function meta(key: 'name' | 'property', name: string, content: string) {
-  setTag(
-    `meta[${key}="${name}"]`,
-    () => {
-      const el = document.createElement('meta');
-      el.setAttribute(key, name);
-      return el;
-    },
-    'content',
-    content,
-  );
+/** Finds a head element by selector, creating it on first use. */
+function headElement<T extends HTMLElement>(selector: string, create: () => T): T {
+  const existing = document.head.querySelector<T>(selector);
+  if (existing) return existing;
+  const el = create();
+  document.head.appendChild(el);
+  return el;
 }
 
 /**
- * Keeps the title, description, canonical and social tags in sync on client-side
- * navigation. Pre-rendered pages already ship the same tags (see `renderHeadTags`),
- * so this only updates existing elements rather than adding duplicates.
+ * Keeps the title, canonical link and meta tags in sync on client-side navigation.
+ * Pre-rendered pages already ship these tags (see `renderHeadTags`), so existing
+ * elements are updated rather than duplicated.
  */
-export function useDocumentMeta({ title, description, path, noindex }: PageMeta) {
+export function useDocumentMeta(meta: PageMeta) {
+  const { title, description, path, noindex } = meta;
+
   useEffect(() => {
-    const url = absoluteUrl(path);
+    const page = { title, description, path, noindex };
     document.title = title;
-    meta('name', 'description', description);
-    meta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
-    setTag(
-      'link[rel="canonical"]',
-      () => Object.assign(document.createElement('link'), { rel: 'canonical' }),
-      'href',
-      url,
-    );
-    meta('property', 'og:title', title);
-    meta('property', 'og:description', description);
-    meta('property', 'og:url', url);
-    meta('name', 'twitter:title', title);
-    meta('name', 'twitter:description', description);
+
+    headElement('link[rel="canonical"]', () =>
+      Object.assign(document.createElement('link'), { rel: 'canonical' }),
+    ).href = absoluteUrl(path);
+
+    for (const { attr, key, content } of metaTags(page)) {
+      headElement(`meta[${attr}="${key}"]`, () => {
+        const el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        return el;
+      }).content = content;
+    }
   }, [title, description, path, noindex]);
 }

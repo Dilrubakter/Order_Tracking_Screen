@@ -3,6 +3,9 @@ import { ToastProvider } from '@/components/ui/Toast';
 import { ScenarioPicker } from '@/features/scenarios/ScenarioPicker';
 import { TrackOrderPage } from '@/features/tracking/TrackOrderPage';
 
+/** Router basename: `/` locally, the repo sub-path (e.g. `/Order_Tracking_Screen`) on GitHub Pages. */
+export const ROUTER_BASENAME = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
 /**
  * Routes only; the router comes from the entry point: BrowserRouter in the
  * browser, StaticRouter when pre-rendering, HashRouter in the single-file build.

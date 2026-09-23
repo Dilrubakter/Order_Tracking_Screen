@@ -6,7 +6,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 
-/** `vite preview` equivalent of GitHub Pages / Vercel clean URLs: /track/x → /track/x.html. */
+/** Makes `vite preview` serve /track/x from track/x.html, as GitHub Pages does. */
 function cleanUrlsPreview(): Plugin {
   return {
     name: 'clean-urls-preview',
@@ -28,17 +28,16 @@ function cleanUrlsPreview(): Plugin {
 // `vite build --mode single` inlines every asset into one index.html,
 // which is handy for sharing a static demo.
 export default defineConfig(({ mode }) => {
-  // Site origin for canonical/OG URLs: VITE_SITE_URL (env or .env) wins, then Vercel's
-  // production domain (a system env var on every Vercel build), then the local preview server.
-  // Setting it on process.env exposes it to the app and to %VITE_SITE_URL% in index.html.
+  // Sub-path the site is served from: `/` locally, `/<repo>/` on GitHub Pages (set by the deploy workflow).
   const base = process.env.BASE_PATH || '/';
-  const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+  // Site URL for canonical, Open Graph and sitemap links. Set by the deploy workflow;
+  // locally it falls back to the `vite preview` server. Putting it on process.env
+  // exposes it to the app and to %VITE_SITE_URL% in index.html.
   process.env.VITE_SITE_URL =
-    loadEnv(mode, process.cwd(), 'VITE_').VITE_SITE_URL ||
-    (vercelUrl ? `https://${vercelUrl}` : `http://localhost:4173${base.replace(/\/$/, '')}`);
+    loadEnv(mode, process.cwd(), 'VITE_').VITE_SITE_URL || `http://localhost:4173${base.replace(/\/$/, '')}`;
 
   return {
-    // Sub-path the site is served from, e.g. `/Order_Tracking_Screen/` on GitHub Pages.
     base,
     plugins: [react(), cleanUrlsPreview(), ...(mode === 'single' ? [viteSingleFile()] : [])],
     resolve: {

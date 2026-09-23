@@ -17,7 +17,7 @@ npm run dev          # http://localhost:5173
 npm test             # unit + integration tests (Vitest, Testing Library)
 npm run typecheck
 npm run build        # production build + pre-rendered pages, sitemap.xml, robots.txt → dist/
-npm run preview      # serve dist/ with the same clean URLs as Vercel
+npm run preview      # serve dist/ with the same clean URLs as GitHub Pages
 npm run build:single # one self-contained index.html (hash URLs) → dist-single/
 ```
 
@@ -25,16 +25,16 @@ npm run build:single # one self-contained index.html (hash URLs) → dist-single
 
 The start screen lists every state. Each one opens `/track/:scenarioId` (`/#/track/:scenarioId` in the single-file build).
 
-| Scenario           | What it shows                                                                 |
-| ------------------ | ----------------------------------------------------------------------------- |
-| `out-for-delivery` | Happy path, used as the baseline layout                                       |
-| `slow-network`     | Skeleton that matches the real layout, shown for about 3 seconds             |
-| `network-error`    | First request fails (NET-504); **Try again** recovers it                      |
-| `no-active-orders` | Empty state with **Continue shopping**                                        |
-| `delayed`          | Coral delay hero, original date struck through, stalled step, refund / cancel flow  |
-| `delayed-no-eta`   | Same as `delayed`, but "New estimate pending"                                 |
-| `delivered`        | Proof of delivery → "Didn't receive it?" → guided checks → case opened        |
-| `awaiting-carrier` | Order confirmed, carrier hasn't picked it up yet, "Notify me when it ships"   |
+| Scenario           | What it shows                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| `out-for-delivery` | Happy path, used as the baseline layout                                            |
+| `slow-network`     | Skeleton that matches the real layout, shown for about 3 seconds                   |
+| `network-error`    | First request fails (NET-504); **Try again** recovers it                           |
+| `no-active-orders` | Empty state with **Continue shopping**                                             |
+| `delayed`          | Coral delay hero, original date struck through, stalled step, refund / cancel flow |
+| `delayed-no-eta`   | Same as `delayed`, but "New estimate pending"                                      |
+| `delivered`        | Proof of delivery → "Didn't receive it?" → guided checks → case opened             |
+| `awaiting-carrier` | Order confirmed, carrier hasn't picked it up yet, "Notify me when it ships"        |
 
 What persists: actions such as reporting a missing package, requesting a refund or toggling notifications are
 stored in the mock API for the session. **Reset demo data** on the start screen clears them.
@@ -49,7 +49,7 @@ src/
   lib/format.ts               Date/time (Asia/Dhaka) and money (BDT ৳) formatting
   hooks/                      useOrderTracking (load / retry / replace), useCopyToClipboard
   styles/                     Design tokens (tokens.css) and global styles
-  seo/                        Per-page titles and descriptions (meta.ts), useDocumentMeta
+  seo/                        Page titles and descriptions (meta.ts), head tags (headTags.ts), useDocumentMeta
   entry-server.tsx            Renders a route to HTML at build time (used by scripts/prerender.mjs)
   components/
     layout/Screen.tsx         Top bar, scrolling content, sticky action bar
@@ -91,12 +91,16 @@ src/
 - The build also writes `sitemap.xml`, `robots.txt` and a `noindex` `404.html`.
 - `index.html` has WebApplication JSON-LD, favicons, a web manifest and a 1200×630 social image (`public/og-image.png`).
 - Fonts are self-hosted (`@fontsource-variable`), and the body font is preloaded.
-- **Site URL:** on Vercel it is the project's production domain automatically (`VERCEL_PROJECT_PRODUCTION_URL`);
-  locally it is `http://localhost:4173`. For a custom domain, set `VITE_SITE_URL` in `.env` or in Vercel.
-  Canonical URLs, the sitemap and the social image URLs all come from it.
-- Deploy: `vercel.json` sets `cleanUrls`, so `dist/track/delayed.html` is served at `/track/delayed`.
+- **Site URL:** canonical URLs, the sitemap and the social image URLs come from `VITE_SITE_URL`. The deploy
+  workflow sets it; locally it is `http://localhost:4173`. For a custom domain, set it in `.env`.
 - `src/seo/__tests__/prerender.test.tsx` checks that every page hydrates without a mismatch and that titles and
   descriptions are unique and a sensible length.
+
+## Deployment
+
+Live at **https://dilrubakter.github.io/Order_Tracking_Screen/**. Every push to `main` runs
+`.github/workflows/deploy.yml`, which tests, builds with the repo sub-path as `BASE_PATH`, and publishes `dist/` to
+GitHub Pages. GitHub Pages serves `dist/track/delayed.html` at `/track/delayed`.
 
 ## Accessibility
 

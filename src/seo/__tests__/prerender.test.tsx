@@ -1,10 +1,19 @@
 import { act } from '@testing-library/react';
-import { hydrateRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter, StaticRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from '@/App';
-import { absoluteUrl, INDEXABLE_PAGES, NOT_FOUND_META, renderHeadTags, scenarioMeta } from '../meta';
+import { renderHeadTags } from '../headTags';
+import { absoluteUrl, INDEXABLE_PAGES, NOT_FOUND_META, scenarioMeta } from '../meta';
+
+function renderInBrowser(path: string) {
+  return (
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  );
+}
 
 describe('pre-rendered pages', () => {
   it.each(INDEXABLE_PAGES.map((p) => p.path))('%s hydrates without a mismatch', async (path) => {
@@ -17,31 +26,15 @@ describe('pre-rendered pages', () => {
     expect(container.querySelector('h1')).not.toBeNull();
 
     const onRecoverableError = vi.fn();
-    const root = await act(async () =>
-      hydrateRoot(
-        container,
-        <MemoryRouter initialEntries={[path]}>
-          <App />
-        </MemoryRouter>,
-        { onRecoverableError },
-      ),
-    );
+    const root = await act(async () => hydrateRoot(container, renderInBrowser(path), { onRecoverableError }));
     expect(onRecoverableError).not.toHaveBeenCalled();
     act(() => root.unmount());
   });
 
   it('syncs head tags on the client', async () => {
-    const container = document.createElement('div');
-    const root = await act(async () => {
-      const { createRoot } = await import('react-dom/client');
-      const r = createRoot(container);
-      r.render(
-        <MemoryRouter initialEntries={['/track/delivered']}>
-          <App />
-        </MemoryRouter>,
-      );
-      return r;
-    });
+    const root = createRoot(document.createElement('div'));
+    await act(async () => root.render(renderInBrowser('/track/delivered')));
+
     const meta = scenarioMeta('delivered');
     expect(document.title).toBe(meta.title);
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toBe(meta.description);
