@@ -1,5 +1,5 @@
-import '@fontsource-variable/fraunces/opsz.css';
-import '@fontsource-variable/plus-jakarta-sans/wght.css';
+import '@fontsource-variable/fraunces/opsz.css'; //use for heading
+import '@fontsource-variable/plus-jakarta-sans/wght.css'; //use for body text
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
