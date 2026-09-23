@@ -33,9 +33,7 @@ export function ScenarioPicker() {
       <header className={styles.header}>
         <p className={styles.eyebrow}>Demo · Order #{DEMO_ORDER_ID}</p>
         <h1 className={styles.title}>Order tracking</h1>
-        <p className={styles.lead}>
-          Pick a scenario to open the tracking screen in that state. Everything is clickable.
-        </p>
+        <p className={styles.lead}>Pick a scenario to open the tracking screen in that state.</p>
       </header>
 
       {GROUPS.map((group) => (
