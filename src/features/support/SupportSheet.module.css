@@ -1,0 +1,200 @@
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.options li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.option {
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-3) var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.option:hover .optionTitle {
+  color: var(--color-brand);
+}
+
+.optionIcon {
+  color: var(--color-brand);
+}
+
+.optionText {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.optionTitle {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.optionSub,
+.muted {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.chevron {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.callInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.phone {
+  font-size: var(--text-hero);
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.callLink {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: 14px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.agentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.online {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success-solid);
+}
+
+.otherOptions {
+  margin-left: auto;
+  margin-right: calc(-1 * var(--space-2));
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 180px;
+  max-height: 40dvh;
+  overflow-y: auto;
+}
+
+.agent,
+.customer,
+.typing {
+  max-width: 82%;
+  padding: var(--space-2-5) var(--space-3);
+  font-size: var(--text-base);
+  line-height: 20px;
+}
+
+.agent,
+.typing {
+  align-self: flex-start;
+  background: var(--color-fill-neutral);
+  border-radius: 16px 16px 16px 4px;
+}
+
+.typing {
+  color: var(--color-text-tertiary);
+  letter-spacing: 2px;
+}
+
+.customer {
+  align-self: flex-end;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  border-radius: 16px 16px 4px 16px;
+}
+
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-brand);
+}
+
+.composer {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.input {
+  flex-grow: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  font-size: var(--text-md);
+}
+
+.send {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.send:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

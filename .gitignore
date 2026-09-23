@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-single
+*.log
+dist-ssr
+tsconfig.tsbuildinfo

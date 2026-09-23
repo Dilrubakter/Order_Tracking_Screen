@@ -1,0 +1,131 @@
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.checklist li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.checkIcon {
+  color: var(--color-text-secondary);
+}
+
+.check {
+  min-height: 64px;
+  padding: var(--space-2) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.checkText {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.checkTitle {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.checkDetail {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.checkbox,
+.radio {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--color-brand);
+  cursor: pointer;
+}
+
+.checkbox {
+  accent-color: var(--success-solid);
+}
+
+.progress {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.radioCard {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.radioCard[data-checked='true'] {
+  border-color: var(--color-brand);
+  box-shadow: inset 0 0 0 1px var(--color-brand);
+}
+
+.radio {
+  margin-top: 1px;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  padding: var(--space-2);
+  font-size: var(--text-md);
+  line-height: 22px;
+  color: var(--color-text-secondary);
+}
+
+.success strong {
+  color: var(--color-text);
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--success-solid);
+  color: #ffffff;
+}
+
+.caseMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.caseCopy {
+  margin-left: auto;
+  margin-right: calc(-1 * var(--space-2));
+  color: var(--color-brand);
+}

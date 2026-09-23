@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0F0F4"/>
+      <stop offset="1" stop-color="#E1E1E8"/>
+    </linearGradient>
+    <symbol id="sock" viewBox="0 0 46 82" overflow="visible">
+      <path d="M0 0 H24 V46 L41 62 C46 67 46 74 41 78.5 C36 83 29 82.5 25 78 L3 56 C1 54 0 52 0 49.5 Z"/>
+    </symbol>
+  </defs>
+  <rect width="160" height="160" fill="url(#bg)"/>
+  <ellipse cx="82" cy="130" rx="50" ry="5" fill="#000" opacity="0.07"/>
+
+  <g transform="translate(36 34) rotate(-10)">
+    <use href="#sock" width="46" height="82" fill="#C3C5CE"/>
+    <rect width="24" height="10" fill="#A9ACB8"/>
+    <path d="M26.5 77 C29.5 70 38 67 43.5 70.5 C45.5 74 44.5 77 41 79.5 C36 83 30 82 26.5 77 Z" fill="#A9ACB8"/>
+  </g>
+  <g transform="translate(64 30)">
+    <use href="#sock" width="46" height="82" fill="#9EA1AE"/>
+    <rect width="24" height="10" fill="#848898"/>
+    <path d="M26.5 77 C29.5 70 38 67 43.5 70.5 C45.5 74 44.5 77 41 79.5 C36 83 30 82 26.5 77 Z" fill="#848898"/>
+  </g>
+  <g transform="translate(92 32) rotate(9)">
+    <use href="#sock" width="46" height="82" fill="#D3D5DC"/>
+    <rect width="24" height="10" fill="#B9BCC6"/>
+    <path d="M26.5 77 C29.5 70 38 67 43.5 70.5 C45.5 74 44.5 77 41 79.5 C36 83 30 82 26.5 77 Z" fill="#B9BCC6"/>
+  </g>
+  <g stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1">
+    <path d="M69 31 V39"/><path d="M74 31 V39"/><path d="M79 31 V39"/><path d="M84 31 V39"/>
+  </g>
+</svg>

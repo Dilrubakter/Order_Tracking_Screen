@@ -1,0 +1,194 @@
+.thumb {
+  display: block;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--color-fill-neutral);
+  box-shadow: inset 0 0 0 1px rgba(42, 20, 23, 0.06);
+}
+
+.stack .thumb {
+  border-radius: 8px;
+}
+
+.item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.itemBody {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemName {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemVariant {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.itemFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.qty {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-tertiary);
+}
+
+.price {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.moreButton {
+  width: 100%;
+  min-height: var(--tap-target);
+  padding: 0 var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-muted);
+}
+
+.moreButton:hover {
+  background: var(--color-fill-neutral);
+}
+
+.stack {
+  display: flex;
+}
+
+.stack > * + * {
+  margin-left: -6px;
+  box-shadow: 0 0 0 2px var(--color-surface-muted);
+}
+
+.moreLabel {
+  flex-grow: 1;
+  text-align: left;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-brand);
+}
+
+.moreList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.chevron,
+.chevronMuted {
+  flex-shrink: 0;
+  transition: transform 160ms ease;
+}
+
+.chevron {
+  color: var(--color-brand);
+}
+
+.chevronMuted {
+  color: var(--color-text-secondary);
+}
+
+.chevron[data-open='true'],
+.chevronMuted[data-open='true'] {
+  transform: rotate(180deg);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.totalLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.totalLabel {
+  font-size: var(--text-md);
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+.totalHint {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-tertiary);
+}
+
+.total {
+  font-size: var(--text-xl);
+  line-height: 22px;
+  font-weight: 700;
+}
+
+.addressButton {
+  width: 100%;
+  min-height: 48px;
+  margin-top: calc(-1 * var(--space-2));
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.pin {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.addressText {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.addressLabel {
+  font-size: var(--text-xs);
+  line-height: 16px;
+  color: var(--color-text-tertiary);
+}
+
+.addressShort {
+  font-size: var(--text-base);
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.addressLine {
+  font-size: var(--text-base);
+  line-height: 20px;
+}

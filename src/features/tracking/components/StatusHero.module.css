@@ -1,0 +1,183 @@
+.hero {
+  gap: 14px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.head > :last-child:not(.title) {
+  align-self: flex-start;
+}
+
+.message {
+  font-size: var(--text-md);
+  line-height: 22px;
+  color: var(--color-text-secondary);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+}
+
+.segments {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-1);
+}
+
+.segment {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-track);
+}
+
+.segment[data-tone] {
+  background: var(--tone-solid);
+}
+
+.progressLabel {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--tone-fg);
+  white-space: nowrap;
+}
+
+.panel {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: 14px var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.panelBody {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.panelIcon {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.panelIconWarning {
+  flex-shrink: 0;
+  color: var(--warning-fg);
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.panelLabel {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.panelValue {
+  text-wrap: balance;
+  font-size: var(--text-xl);
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.panelHint {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.etaChange {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: var(--space-2);
+  row-gap: 2px;
+}
+
+.struck {
+  font-size: var(--text-md);
+  line-height: 24px;
+  color: var(--color-text-tertiary);
+}
+
+.arrow {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.proof {
+  padding: var(--space-3);
+  align-items: center;
+}
+
+.photoButton {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.photoTag {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(22, 24, 29, 0.72);
+}
+
+.proofTitle {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.signature {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-tertiary);
+}
+
+.footnote {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}

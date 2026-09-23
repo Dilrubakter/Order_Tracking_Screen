@@ -1,0 +1,108 @@
+/*
+ * Design tokens. 8pt spacing, one sans family, neutral base + one brand
+ * accent for primary actions, and semantic tones used only for status.
+ */
+:root {
+  /* Neutrals */
+  --color-backdrop: #ecd3d4;
+  --color-ground: #fbf1f1;
+  --color-topbar: #fff6f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fdf8f7;
+  --color-fill-neutral: #f7ebe9;
+  --color-border: #efdfdc;
+  --color-border-strong: #e1c8c4;
+  --color-text: #2a1417;
+  --color-text-secondary: #6b4b4f;
+  --color-text-tertiary: #80636a;
+  --color-track: rgba(42, 20, 23, 0.1);
+  --color-scrim: rgba(42, 20, 23, 0.5);
+  --color-rail: #eadad7;
+  --color-rail-strong: #d9c1bd;
+  --color-skeleton: #f1e3e1;
+  --color-illustration: #f5e3e2;
+  --color-illustration-ink: #a0707a;
+
+  /* Brand accent (primary actions only) */
+  --color-brand: #9f1d3c;
+  --color-brand-hover: #86152f;
+  --color-brand-soft: #fbe6ea;
+  --color-on-brand: #ffffff;
+
+  /* Semantic tones: fg = text on bg, solid = markers/icons */
+  /* In progress / info: rose, the same family as the brand */
+  --info-fg: #a3123f;
+  --info-bg: #fdebf0;
+  --info-line: #f6c9d6;
+  --info-solid: #d1245a;
+  --info-glow: rgba(209, 36, 90, 0.4);
+
+  --success-fg: #146c3e;
+  --success-bg: #ebf6ef;
+  --success-line: #c9e7d4;
+  --success-solid: #1f8a4c;
+  --success-glow: rgba(31, 138, 76, 0.4);
+
+  /* Delay: warm coral-orange */
+  --warning-fg: #9a3a0a;
+  --warning-bg: #fff0e6;
+  --warning-line: #f9d2b8;
+  --warning-solid: #d9621e;
+  --warning-glow: rgba(217, 98, 30, 0.4);
+
+  /* True errors: deep signal red */
+  --danger-fg: #a3170f;
+  --danger-bg: #ffe9e6;
+  --danger-line: #f4bdb6;
+  --danger-solid: #b91c14;
+  --danger-glow: rgba(185, 28, 20, 0.4);
+
+  --neutral-fg: #6b4b4f;
+  --neutral-bg: #f7ebe9;
+  --neutral-line: #efdfdc;
+  --neutral-solid: #8c6b71;
+  --neutral-glow: rgba(124, 127, 134, 0.4);
+
+  /* Spacing (8pt grid, with 4px half-steps) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-2-5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* Type */
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces Variable', 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 17px;
+  --text-2xl: 20px;
+  --text-hero: 24px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(122, 30, 50, 0.05);
+  --shadow-sticky: 0 -6px 18px rgba(122, 30, 50, 0.07);
+  --shadow-overlay: 0 8px 24px rgba(90, 20, 36, 0.26);
+
+  /* Layout */
+  --app-max-width: 430px;
+  --topbar-height: 64px;
+  --tap-target: 44px;
+
+  --z-sticky: 10;
+  --z-sheet: 30;
+  --z-toast: 40;
+}

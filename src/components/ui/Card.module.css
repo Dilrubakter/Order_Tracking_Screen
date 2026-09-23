@@ -1,0 +1,136 @@
+/* Tone variables are resolved from data-tone so one rule set serves every state. */
+[data-tone='info'] {
+  --tone-fg: var(--info-fg);
+  --tone-bg: var(--info-bg);
+  --tone-line: var(--info-line);
+  --tone-solid: var(--info-solid);
+}
+[data-tone='success'] {
+  --tone-fg: var(--success-fg);
+  --tone-bg: var(--success-bg);
+  --tone-line: var(--success-line);
+  --tone-solid: var(--success-solid);
+}
+[data-tone='warning'] {
+  --tone-fg: var(--warning-fg);
+  --tone-bg: var(--warning-bg);
+  --tone-line: var(--warning-line);
+  --tone-solid: var(--warning-solid);
+}
+[data-tone='danger'] {
+  --tone-fg: var(--danger-fg);
+  --tone-bg: var(--danger-bg);
+  --tone-line: var(--danger-line);
+  --tone-solid: var(--danger-solid);
+}
+[data-tone='neutral'] {
+  --tone-fg: var(--neutral-fg);
+  --tone-bg: var(--neutral-bg);
+  --tone-line: var(--neutral-line);
+  --tone-solid: var(--neutral-solid);
+}
+[data-tone='brand'] {
+  --tone-fg: var(--color-brand);
+  --tone-bg: var(--color-brand-soft);
+  --tone-line: var(--color-border);
+  --tone-solid: var(--color-brand);
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.plain {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.toned {
+  background: var(--tone-bg);
+  border: 1px solid var(--tone-line);
+}
+
+.lg {
+  padding: var(--space-5);
+}
+
+.md {
+  padding: var(--space-4);
+}
+
+.row {
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-lg);
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.aside {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.soft {
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+}
+
+.badge.soft[data-tone='neutral'] {
+  background: var(--color-fill-neutral);
+  color: var(--color-text-secondary);
+}
+
+.solid {
+  background: var(--tone-solid);
+  color: #ffffff;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  line-height: 16px;
+  font-weight: 600;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  white-space: nowrap;
+}
+
+.pillOutline {
+  padding: var(--space-1) var(--space-2-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}

@@ -1,0 +1,256 @@
+.card {
+  padding-bottom: var(--space-2);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  gap: 14px;
+}
+
+.rail {
+  width: 24px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ----- markers ----- */
+.markerDone,
+.markerCurrent,
+.markerWarning,
+.markerUpcoming {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markerDone {
+  background: var(--tone-solid);
+  color: #ffffff;
+}
+
+.markerCurrent {
+  background: var(--color-surface);
+  border: 2px solid var(--tone-solid);
+  box-shadow: 0 0 0 4px var(--tone-bg);
+  animation: pulse 2s ease-out infinite;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tone-solid);
+}
+
+.markerWarning {
+  background: var(--warning-solid);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px var(--warning-bg);
+}
+
+.exclaim {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.markerUpcoming {
+  background: var(--color-surface);
+  border: 2px solid var(--color-rail-strong);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 0 0 4px var(--tone-bg),
+      0 0 0 4px var(--tone-line);
+  }
+  70% {
+    box-shadow:
+      0 0 0 4px var(--tone-bg),
+      0 0 0 12px transparent;
+  }
+  100% {
+    box-shadow:
+      0 0 0 4px var(--tone-bg),
+      0 0 0 12px transparent;
+  }
+}
+
+/* ----- connectors ----- */
+.connector {
+  flex-grow: 1;
+  min-height: 16px;
+  width: 2px;
+  margin-top: var(--space-1);
+  background: var(--color-rail);
+}
+
+.connector[data-kind='solid'] {
+  background: var(--tone-solid);
+}
+
+.connector[data-kind='dashed'] {
+  width: 0;
+  background: none;
+  border-left: 2px dashed var(--color-rail-strong);
+}
+
+/* ----- text ----- */
+.stepBody {
+  flex-grow: 1;
+  min-width: 0;
+  padding-bottom: var(--space-5);
+}
+
+.step:last-child .stepBody {
+  padding-bottom: 0;
+}
+
+.stepHead {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.stepLabel {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.step[data-state='upcoming'] .stepLabel {
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+}
+
+.stepDetail {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-tertiary);
+}
+
+.note {
+  margin-top: var(--space-2);
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  padding: var(--space-2-5) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--tone-bg);
+  border: 1px solid var(--tone-line);
+  color: var(--tone-fg);
+  font-size: var(--text-sm);
+  line-height: 18px;
+}
+
+.note svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ----- history ----- */
+.historySection {
+  margin: var(--space-1) calc(-1 * var(--space-5)) 0;
+  padding: 0 var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.historyToggle {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  text-align: left;
+}
+
+.historyToggle:hover {
+  background: var(--color-surface-muted);
+}
+
+.historyLabel {
+  flex-grow: 1;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-brand);
+}
+
+.chevron {
+  color: var(--color-brand);
+  transition: transform 160ms ease;
+}
+
+.chevron[data-open='true'] {
+  transform: rotate(180deg);
+}
+
+.historyEmpty {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  padding: 0 var(--space-2);
+  font-size: var(--text-base);
+  color: var(--color-text-tertiary);
+}
+
+.history {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scan {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.scanDot {
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-rail-strong);
+}
+
+.scanDot[data-tone] {
+  background: var(--tone-solid);
+}
+
+.scanTitle {
+  font-size: var(--text-base);
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.scanMeta {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-tertiary);
+}

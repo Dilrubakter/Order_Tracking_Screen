@@ -1,0 +1,36 @@
+.body {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta {
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.copied {
+  font-weight: 600;
+  color: var(--success-fg);
+}
+
+.number {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.pending {
+  font-size: var(--text-md);
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+}
+
+.check {
+  color: var(--success-solid);
+}
